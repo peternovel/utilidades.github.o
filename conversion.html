@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conversor Kg ↔ Metros | Conductores</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    body {
+      margin: 0;
+      background: #f3f6fb;
+      color: #132039;
+    }
+    .wrap {
+      max-width: 560px;
+      margin: 48px auto;
+      background: #fff;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 8px 20px rgba(19, 32, 57, 0.12);
+    }
+    h1 {
+      margin-top: 0;
+      font-size: 1.4rem;
+    }
+    p {
+      margin-top: 0;
+      color: #44536f;
+    }
+    .field {
+      display: grid;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+    label { font-weight: 600; }
+    select, input {
+      border: 1px solid #cad3e2;
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 1rem;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .note {
+      margin-top: 12px;
+      font-size: .9rem;
+      color: #5c6d8b;
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <h1>Conversor de Kg a Metros</h1>
+    <p>Conductores eléctricos desnudos (trenzados) de aluminio y cobre.</p>
+
+    <div class="field">
+      <label for="material">Material</label>
+      <select id="material">
+        <option value="aluminio">Aluminio</option>
+        <option value="cobre">Cobre</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="calibre">Calibre</label>
+      <select id="calibre">
+        <option value="4">#4</option>
+        <option value="2">#2</option>
+        <option value="1/0">1/0</option>
+        <option value="2/0">2/0</option>
+        <option value="3/0">3/0</option>
+        <option value="4/0">4/0</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="metros">Metros</label>
+      <input type="number" id="metros" min="0" step="0.01" placeholder="Ingresa metros" />
+    </div>
+
+    <div class="field">
+      <label for="kilos">Kilos (kg)</label>
+      <input type="number" id="kilos" min="0" step="0.01" placeholder="Ingresa kilos" />
+    </div>
+
+    <div class="note" id="factorInfo"></div>
+  
+  <div class="wrap">
+      <label><p>Por Pedro Novelino</p></label>
+      
+    </div>
+  
+  </main>
+
+  <script>
+    const kgPorMetro = {
+      aluminio: {
+        '4': 0.057,
+        '2': 0.108,
+        '1/0': 0.172,
+        '2/0': 0.217,
+        '3/0': 0.230,
+        '4/0': 0.345
+      },
+      cobre: {
+        '4': 0.189,
+        '2': 0.301,
+        '1/0': 0.479,
+        '2/0': 0.604,
+        '3/0': 0.762,
+        '4/0': 0.961
+      }
+    };
+
+    const materialEl = document.getElementById('material');
+    const calibreEl = document.getElementById('calibre');
+    const metrosEl = document.getElementById('metros');
+    const kilosEl = document.getElementById('kilos');
+    const factorInfoEl = document.getElementById('factorInfo');
+
+    function getFactor() {
+      return kgPorMetro[materialEl.value][calibreEl.value];
+    }
+
+    function updateFactorInfo() {
+      const factor = getFactor();
+      factorInfoEl.textContent = `Factor de conversión: ${factor.toFixed(3)} kg/m (${(factor * 1000).toFixed(0)} kg/km)`;
+    }
+
+    function fromMetros() {
+      const metros = parseFloat(metrosEl.value);
+      if (Number.isNaN(metros)) {
+        kilosEl.value = '';
+        return;
+      }
+      const kilos = metros * getFactor();
+      kilosEl.value = kilos.toFixed(3);
+    }
+
+    function fromKilos() {
+      const kilos = parseFloat(kilosEl.value);
+      if (Number.isNaN(kilos)) {
+        metrosEl.value = '';
+        return;
+      }
+      const metros = kilos / getFactor();
+      metrosEl.value = metros.toFixed(3);
+    }
+
+    metrosEl.addEventListener('input', fromMetros);
+    kilosEl.addEventListener('input', fromKilos);
+
+    [materialEl, calibreEl].forEach((el) => {
+      el.addEventListener('change', () => {
+        updateFactorInfo();
+        if (metrosEl.value) {
+          fromMetros();
+        } else if (kilosEl.value) {
+          fromKilos();
+        }
+      });
+    });
+
+    updateFactorInfo();
+  </script>
+
+</body>
+</html>

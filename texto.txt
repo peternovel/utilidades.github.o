@@ -1,0 +1,4 @@
+puedes generar un archivo apk  en cual genere un formulario con encabezado LEVANTAMIENTO que almacene las coordenadas de la ubicacion geografica actual con un boton y colocarla en un textbox, dirección en un texbox, listbox  tipo de lampara segun los siguientes tipos: LED 100W, LED 150W, SODIO 150W, SODIO 250W, SODIO 400W, listbox tipo de poste segun los siguientes tipos ALTA, BAJA, textbox donde indique equipo instalado, texbox donde indique tipo de banco, texbox donde indique capacidad, dichos datos deben guardarse localmente en un archivo de texto que se llame datos, al final un boton que almacene los datos de cada campo, se podra agregar datos a ese mismo archivo progresivamente
+
+https://chatgpt.com/s/cd_69bb4d566da88191b6076e4c39297bf3
+
