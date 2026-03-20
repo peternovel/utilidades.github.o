@@ -42,5 +42,15 @@ const frases = [
     { frase: "Esta pagina de frases la cree comiendome un croissant. ¡Asi da gusto!", autor: "Alberto Fuentes" },
     { frase: "La gente no cambia, se comporta bien cuando quieren conseguir algo. Por eso mismo callo y me largo", autor: "Alberto Fuentes" },
     { frase: "RECONOCER es una palabra tan importante que se escribe igual al derecho que al revés.", autor:"Anónimo"},
+{ frase: "No son las cosas las que nos perturban, sino nuestras opiniones sobre ellas", autor:"Seneca"},
+{ frase: "No pretendas que las cosas ocurran como tú quieres. Desea más bien que se produzcan tal como se producen y serás más feliz", autor:"Seneca"},
+{ frase: "Cualquier persona capaz de enojarte se convierte en tu amo", autor:"Seneca"},
+{ frase: "Solo el hombre culto es libre", autor:"Seneca"},
+{ frase: "Deja de buscar problemas innecesarios, es hora de vivir", autor:"Seneca"},
+{ frase: "Si hablan mal de ti y es verdad, corrígete; si es mentira, ríete de ello", autor:"Seneca"},
+{ frase: "Tomemos como ejemplo a un músico, quien está relajado cuando está tocando solo pero que frente a una audiencia, es una historia diferente", autor:"Seneca"},
+{ frase: "La felicidad no consiste en adquirir y gozar, sino en no desear nada", autor:"Seneca"},
+{ frase: "Primero dite a ti mismo lo que serías, y luego haz lo que tienes que hacer", autor:"Seneca"},
+{ frase: "La cojera es un obstáculo para el cuerpo, no para la mente", autor:"Seneca"},
 ];
 
